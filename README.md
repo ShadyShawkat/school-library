@@ -2,7 +2,7 @@
 
 # School Library
 
-> Description.
+> School library app with Person, Student, and Teacher classes. Built with Ruby.
 
 ## Built With
 
