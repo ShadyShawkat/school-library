@@ -41,6 +41,16 @@ class App
     puts "Student created successfully\n\n"
   end
 
+  def add_teacher
+    print "Age: "
+    age = await_user_input.to_i
+    print "Name: "
+    name = await_user_input
+    print "Specialization: "
+    specialization = await_user_input
+    @people << Teacher.new(age, specialization, name: name)
+  end
+
   def run
     exit_status = false
 
@@ -60,6 +70,8 @@ class App
         case person_option
         when "1"
           add_student
+        when "2"
+          add_teacher
         end
       when "7"
         exit_status = true
