@@ -52,6 +52,15 @@ class App
     @people << Teacher.new(age, specialization, name: name)
   end
 
+  def add_book
+    print "Title: "
+    title = await_user_input
+    print "Author: "
+    author = await_user_input
+    @books << Book.new(title, author)
+    puts "Book created successfully\n\n"
+  end
+
   def display_people_list
     puts "\nList of people present in the school:"
     @people.each { |person| 
@@ -82,6 +91,8 @@ class App
         when 2
           add_teacher
         end
+      when 4
+        add_book
       when 7
         exit_status = true
       else
