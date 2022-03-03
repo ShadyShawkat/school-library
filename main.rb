@@ -1,4 +1,8 @@
 class App
+  def intialize
+    @books, @people = []
+  end
+
   def display_options
     puts "1 - List all books"
     puts "2 - List all people"
