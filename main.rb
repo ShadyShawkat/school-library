@@ -50,6 +50,7 @@ class App
     print "Specialization: "
     specialization = await_user_input
     @people << Teacher.new(age, specialization, name: name)
+    puts "Teacher created successfully\n\n"
   end
 
   def add_book
@@ -63,16 +64,18 @@ class App
 
   def add_rental
     puts "Select a book from the following list by number"
-    @books.each { |book, index| 
-      puts "#{index}) #{book.inspect}"
+    @books.each_with_index { |book, index| 
+      print "#{index}) "
+      p book
     }
-    bookIndex = await_user_input
+    bookIndex = await_user_input.to_i
 
     puts "Select a person from the following list by number (not id)"
-    @people.each { |person, index| 
-      puts "#{index}) #{person.inspect}"
+    @people.each_with_index { |person, index| 
+      print "#{index}) "
+      p person
     }
-    personIndex = await_user_input
+    personIndex = await_user_input.to_i
 
     print "Date: "
     date = await_user_input
@@ -84,6 +87,15 @@ class App
   def display_list(list)
     list.each { |item| 
       p item
+    }
+    print "\n\n"
+  end
+
+  def display_rentals
+    print "ID of person: "
+    person_ID = await_user_input.to_i
+    @people.find{|person| person.id == person_ID}.rentals.each { |rental| 
+      p rental
     }
     print "\n\n"
   end
@@ -114,6 +126,8 @@ class App
         add_book
       when 5
         add_rental
+      when 6
+        display_rentals
       when 7
         exit_status = true
       else
