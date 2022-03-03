@@ -61,6 +61,26 @@ class App
     puts "Book created successfully\n\n"
   end
 
+  def add_rental
+    puts "Select a book from the following list by number"
+    @books.each { |book, index| 
+      puts "#{index}) #{book.inspect}"
+    }
+    bookIndex = await_user_input
+
+    puts "Select a person from the following list by number (not id)"
+    @people.each { |person, index| 
+      puts "#{index}) #{person.inspect}"
+    }
+    personIndex = await_user_input
+
+    print "Date: "
+    date = await_user_input
+
+    @books[bookIndex].add_book_rental(date, @people[personIndex])
+    puts "Rental created successfully\n\n"
+  end
+
   def display_list(list)
     list.each { |item| 
       p item
@@ -92,6 +112,8 @@ class App
         end
       when 4
         add_book
+      when 5
+        add_rental
       when 7
         exit_status = true
       else
