@@ -61,17 +61,9 @@ class App
     puts "Book created successfully\n\n"
   end
 
-  def display_people_list
-    puts "\nList of people present in the school:"
-    @people.each { |person| 
-      p person
-    }
-    print "\n\n"
-  end
-
-  def display_books_list
-    @books.each { |book| 
-      p book
+  def display_list(list)
+    list.each { |item| 
+      p item
     }
     print "\n\n"
   end
@@ -85,9 +77,9 @@ class App
 
       case option.to_i
       when 1
-        display_books_list
+        display_list(@books)
       when 2
-        display_people_list
+        display_list(@people)
       when 3
         print "Do you want to create a student (1) or a teacher (2)? [Input the number]: "
         person_option = await_user_input
