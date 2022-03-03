@@ -11,4 +11,8 @@ class Rental
     @person = person
     person.rentals << self unless person.rentals.include?(self)
   end
+
+  def inspect
+    print "Date: #{date}, Book: \"#{book.title}\" by #{book.author}"
+  end
 end

@@ -13,4 +13,8 @@ class Book
   def add_book_rental(date, person)
     @rentals << Rental.new(date, self, person)
   end
+
+  def inspect
+    print "Title: #{title}, Author: #{author}"
+  end
 end

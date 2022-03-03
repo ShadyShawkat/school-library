@@ -1,4 +1,5 @@
-require_relative 'corrector', 'rental'
+require_relative 'corrector'
+require_relative 'rental'
 
 class Person
   attr_accessor :name, :age
@@ -29,5 +30,9 @@ class Person
 
   def add_book_rental(date, book)
     rentals << Rental.new(date, book, self)
+  end
+
+  def inspect
+    print "[#{self.class}] ID:#{id}, Name: #{name}, Age: #{age}"
   end
 end
