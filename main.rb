@@ -69,16 +69,23 @@ class App
     print "\n\n"
   end
 
+  def display_books_list
+    @books.each { |book| 
+      p book
+    }
+    print "\n\n"
+  end
+
   def run
     exit_status = false
 
     while(!exit_status)
-      display_options()
+      display_options
       option = await_user_input
 
       case option.to_i
       when 1
-        puts "you chose 1"
+        display_books_list
       when 2
         display_people_list
       when 3
