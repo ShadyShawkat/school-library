@@ -7,10 +7,16 @@ class App
     puts "5 - Create a rental"
     puts "6 - List all rentals for a given person id"
     puts "7 - Exit"
+    puts "\nPlease type the number that represents the option of choice: "
+  end
+
+  def await_user_input
+    gets.chomp
   end
 
   def run
     display_options()
+    option = await_user_input
   end
 end
 
