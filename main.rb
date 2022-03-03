@@ -1,5 +1,6 @@
 require_relative 'student'
 require_relative 'teacher'
+require_relative 'book'
 
 class App
   def initialize
@@ -51,6 +52,14 @@ class App
     @people << Teacher.new(age, specialization, name: name)
   end
 
+  def display_people_list
+    puts "\nList of people present in the school:"
+    @people.each { |person| 
+      p person
+    }
+    print "\n\n"
+  end
+
   def run
     exit_status = false
 
@@ -58,22 +67,22 @@ class App
       display_options()
       option = await_user_input
 
-      case option
-      when "1"
+      case option.to_i
+      when 1
         puts "you chose 1"
-      when "2"
-        puts "\nList of people present in the school:"
-      when "3"
+      when 2
+        display_people_list
+      when 3
         print "Do you want to create a student (1) or a teacher (2)? [Input the number]: "
         person_option = await_user_input
 
-        case person_option
-        when "1"
+        case person_option.to_i
+        when 1
           add_student
-        when "2"
+        when 2
           add_teacher
         end
-      when "7"
+      when 7
         exit_status = true
       else
         puts "Invalid option. Please try again.\n\n"
